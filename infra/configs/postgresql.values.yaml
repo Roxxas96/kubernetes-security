@@ -1,0 +1,8 @@
+auth:
+  username: ${username}
+  password: ${password}
+  database: ${database}
+
+commonLabels:
+  domain: app
+  role: database

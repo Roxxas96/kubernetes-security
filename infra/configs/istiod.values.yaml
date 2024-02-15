@@ -1,0 +1,7 @@
+pilot:
+  seccompProfile:
+    type: RuntimeDefault
+  deploymentLabels:
+    domain: security
+  podLabels:
+    domain: security

@@ -1,0 +1,21 @@
+prometheus:
+  prometheusSpec:
+    podMonitorSelector:
+      any: true
+    podMonitorNamespaceSelector:
+      any: true
+    serviceMonitorSelector:
+      any: true
+    serviceMonitorNamespaceSelector:
+      any: true
+    probeSelector:
+      any: true
+    probeNamespaceSelector:
+      any: true
+    ruleSelector:
+      any: true
+    ruleNamespaceSelector:
+      any: true
+
+commonLabels:
+  domain: monitoring
