@@ -1,0 +1,37 @@
+services:
+  backend:
+    build:
+      context: .
+    networks:
+      - default
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: bitnami/postgresql:16
+    networks:
+      - default
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/bitnami/postgresql
+    environment:
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=postgres
+      - POSTGRESQL_DATABASE=postgres
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', 'postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db-data:
+networks:
+  default:
+    name: echo
